@@ -1,0 +1,47 @@
+.section .data
+	
+.global ptr1
+
+.section .text
+
+.global zero_count
+		
+zero_count:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+	
+#body	
+	movl $0, %eax
+	movl $0, %ebx
+	
+	movl ptr1, %edx
+	
+count_loop:
+
+	movb (%edx), %bl
+
+	cmpb $0, %bl
+	je end
+
+	cmpb $'0', %bl
+	jne not_equals
+
+	incl %eax
+	incl %edx
+
+	jmp count_loop
+	
+not_equals:	
+	
+	incl %edx
+	cmpb $0, %bl
+	je end
+	jmp count_loop
+	
+end:
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

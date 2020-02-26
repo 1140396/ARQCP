@@ -1,0 +1,14 @@
+ex18: main.o ex18_functions.o
+	gcc -Wall -g main.o ex18_functions.o -o ex18
+
+main.o: main.c library.h
+	gcc -Wall -g -c main.c -o main.o
+
+ex18_functions.o: ex18_functions.s
+	gcc -Wall -g -c ex18_functions.s -o ex18_functions.o
+
+clean: ex18
+	-f *.o ex18
+
+run: ex18
+	./ex18

@@ -1,0 +1,15 @@
+.section .data
+
+.global ptr1
+.global ptr2
+.global ptr3
+
+.section .text
+
+.global str_cat
+
+str_cat:
+#epilogue
+	pushl %ebp
+	movl %esp, %ebp
+	

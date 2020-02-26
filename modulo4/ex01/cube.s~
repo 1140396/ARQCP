@@ -1,0 +1,38 @@
+.section .text
+
+	.global cube
+
+cube:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+	pushl %ebx
+	pushl %esi
+	
+	movl 8(%ebp), %ebx
+
+	movl $3, %ecx
+	movl $1, %esi
+	
+	cmpl $0, %eax
+	je end
+	
+loop_multiplic:
+	
+	imull %ebx, %esi
+	
+	loop loop_multiplic
+
+move_value:
+	movl %esi, %eax
+
+end:
+
+	popl %esi
+	popl %ebx
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

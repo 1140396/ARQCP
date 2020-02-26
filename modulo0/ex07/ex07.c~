@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+
+int count_words(char *str){
+
+  int count=0, i, len;
+
+  char lastC;
+
+  len = strlen(str);
+
+  if(len > 0){
+
+    lastC = str[0];
+  }
+
+  for(i = 0; i <= len; i++){
+
+    if((str[i] == ' ' || str[i] == '\0') && lastC != ' '){
+
+      count++;
+    }
+    
+    lastC = str[i];
+  }
+
+  return count;
+}
+
+int main(){
+
+  int length;
+  char str[20];
+
+  int count_words(char *str);
+
+  printf("\nDigite uma ou varias palavras: ");
+  scanf("%s", &str);
+
+  length = count_words(*str);
+
+  printf("Escreveu %d palavras.", length);
+
+  return 0;
+}

@@ -1,0 +1,55 @@
+.section .data
+
+	.global ptrvec
+	.global num
+	
+.section .text
+
+.global vec_zero
+
+vec_zero:
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+
+	popl %ebx
+	popl %ecx
+	
+	movl $0, %eax
+	movl num, %ecx
+
+	cmpl $0, %ecx
+	je end
+	
+	movl ptrvec, %ebx
+	
+verification_loop:
+	
+	cmpw $100, (%ebx)
+	jge zero
+	
+	addl $2, %ebx
+
+	jmp end_loop
+	
+zero:
+	movw $0, (%ebx)
+
+	addl $2, %ebx
+
+	incl %eax
+
+end_loop:
+	
+	loop verification_loop
+
+end:
+	popl %ebx
+	popl %ecx
+	
+#epilogue
+	popl %ebp
+	movl %ebp, %esp
+	ret

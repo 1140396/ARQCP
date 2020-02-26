@@ -1,0 +1,57 @@
+.section .data
+
+	.global ptrgrades
+	.global num
+	.global ptrfreq
+
+.section .text
+
+	.global frequencies
+	
+frequencies:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+
+	movl ptrfreq, %ebx
+	movl $20, %ecx
+	movl $0, %edx
+	
+	cmpl $0, num
+	je end
+	
+start_loop:
+
+	movl ptrgrades, %eax
+	movl num, %ecx
+
+start_loop2:
+
+	cmpl (%eax), %edx
+	jne no_inc
+	
+	incl %edi
+	
+no_inc:
+
+	incl %eax
+
+	loop start_loop2	
+
+	movl %edi, (%ebx)
+	movl %esi, %ecx
+
+	incl %ebx
+	incl %edx
+	
+	loop start_loop
+end:
+
+#epilogue
+
+	movl %ebp,%esp
+	popl %ebp
+	ret

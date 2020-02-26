@@ -1,0 +1,26 @@
+.section .data
+
+.global byte1
+.global byte2
+
+.section .text
+
+.global concatBytes #short concatBytes()
+	
+concatBytes:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+
+	movl $0, %eax
+	movb byte1, %ah
+	movb byte2, %al
+	
+#epilogue
+
+	movl %ebp, %esp
+	popl %ebp
+	ret

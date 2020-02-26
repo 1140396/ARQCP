@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "encrypt.h"
+
+char str[] = "ddee";
+
+char *ptr1 = str;
+
+int main(){
+
+  int aux = 0;
+  
+  aux = encrypt();
+  
+  printf("Número de digitos encriptados: %d\n", aux);
+
+  return 0;
+}

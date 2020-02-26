@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include "library.h"
+
+int num = 5;
+
+int vec_src [] = {2,3,2,4,5};
+
+int vec_dest [5];
+
+int *ptrsrc = vec_src;
+
+int *ptrdest = vec_dest;
+
+int main(){
+
+  int i, j, aux = 0;
+
+  printf("\n --- VETOR ORIGINAL ---\n");
+
+  for(i = 0; i < num; i++){
+
+    printf("%d|", vec_src[i]);
+  }
+
+  printf("\n");
+
+  aux = sort_without_reps();
+
+  printf("\n --- VETOR CÓPIA SEM REPETIÇÕES ---\n");
+  //Alteração nas vezes que o ciclo faz
+  for(j = 0; j < aux; j++){
+
+    printf("%d|", vec_dest[j]);
+    
+  }
+  
+  printf("\nNúmero de elementos alterados: %d\n", aux);
+  
+  return 0;
+}

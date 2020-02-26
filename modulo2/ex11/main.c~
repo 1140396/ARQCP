@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include "test.h"
+
+int op1 = 31, op2 = 0;
+
+int main(){
+
+  char carry;
+
+  carry = test_flags();
+  
+  if(carry == 0){
+
+    printf("\nSem CF\n");
+
+  }else{
+
+    printf("Com CF\n");
+  }
+
+  return 0;
+}

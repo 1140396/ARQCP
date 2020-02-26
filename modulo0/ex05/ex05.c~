@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+
+//Funcao que converte uma string para inteiro
+int string_to_int (char str[]){
+
+  int digito, j = 1, m = 0;
+
+  for(int i = strlen(str)-1; i >= 0; i--){
+
+    digito = str[i];
+    digito = digito - 48;
+    m = m + (digito * j);
+    j = j*10;
+  }
+
+  return m;
+}
+
+int main(){
+
+  char str[10];
+
+  int inteiro;
+  
+  int string_to_int(char str[]);
+
+  printf("\nDigite uma string de numeros: ");
+  scanf("\n%s", &str)
+
+  inteiro = string_to_int(str);
+
+  printf("\nValor em inteiro: %d\n", inteiro);
+
+  return 0;
+}

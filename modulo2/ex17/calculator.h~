@@ -1,0 +1,2 @@
+int calculator();
+extern int op1, op2, choice;

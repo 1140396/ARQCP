@@ -1,0 +1,58 @@
+.section .text
+
+	.global test_equal
+	
+test_equal:
+
+#prologue
+
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+
+	pushl %ebx
+	pushl %esi
+	pushl %edi
+	
+	movl $1, %eax
+	
+	movl 12(%ebp), %edi
+	movl 8(%ebp), %esi
+
+	movl $0, %ebx
+	movl $0, %ecx
+	
+
+compare:
+
+	movb (%esi), %bl
+	movb (%edi), %cl
+	
+	cmpb %bl, %cl
+	jne false
+
+	incl %edi
+	incl %esi
+
+	cmpb $0, %bl
+	je end
+
+	cmpb $0, %cl
+	je end
+	
+	jmp compare
+	
+false:
+	movl $0, %eax
+
+end:
+	popl %edi
+	popl %esi
+	popl %ebx
+
+#epilogue
+
+	movl %ebp, %esp
+	popl %ebp
+	ret

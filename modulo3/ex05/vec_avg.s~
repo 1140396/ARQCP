@@ -1,0 +1,27 @@
+.section .data
+
+.global aux
+
+.global num	
+	
+.section. text
+
+.global vec_avg
+
+vec_avg:
+
+#epilogue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	movl aux, %eax
+	movl num, %ecx
+	divl %ecx
+	
+	cdq
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

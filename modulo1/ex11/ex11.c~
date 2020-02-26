@@ -1,0 +1,32 @@
+#include<string.h>
+
+int palindrome(char *str){
+
+  char strCopy[20];
+
+  strcpy(strCopy, str);
+  strCopy = strRev(str);
+
+  if(strcmp(str, strCopy) == 0){
+
+    return 1;
+  }
+
+  return 0;
+}
+
+char *strRev(char *str){
+
+  char *begin = str;
+  char *end = str + strlen(str) - 1;
+  char tmp;
+
+  while(end > begin){
+
+    tmp = *end;
+    *end = *begin;
+    *begin++ = tmp;
+  }
+
+  return str;
+}

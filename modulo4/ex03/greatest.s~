@@ -1,0 +1,27 @@
+.global greatest
+
+greatest:
+
+#prologe
+	pushl %ebp
+	movl %esp, %ebp
+#body
+	pushl %ebx
+	pushl %esi
+	
+	movl 16(%ebp), %esi #c
+	movl 12(%ebp), %ecx #b
+	movl 8(%ebp), %ebx #a
+
+compare:
+
+	
+	
+end:
+
+	popl %esi
+	popl %ebx
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

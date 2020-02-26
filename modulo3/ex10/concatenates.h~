@@ -1,0 +1,2 @@
+void str_cat();
+extern long long int *ptr1, *ptr2, *ptr3;

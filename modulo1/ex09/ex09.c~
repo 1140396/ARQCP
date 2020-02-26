@@ -1,0 +1,41 @@
+int sort_without_reps(int *src, int n, int *dest){
+
+  int temp,i, j,k;
+
+  //Algoritmo para retirar elementos repetidos do vetor src
+  for(i = 0; i < n; i++){
+    for(j = i+1; j <= n; j++){
+
+      if(src[j] == src[i]){
+
+	for(k = j; k < n; k++){
+
+	  src[k] = src[k+1];
+
+	}
+	n--;
+      }
+    }
+  }
+  //Algoritmo de ordenação por ordem crescente
+  for(i = 0; i < n; i++){
+    for(j = i+1; j < n; j++){
+
+      if(src[i] > src[j]){
+
+	temp = src[i];
+	src[i] = src[j];
+	src[j] = temp;
+      }
+    }
+  }
+
+  //Obter os valores do vetor origem através de um pointer
+  for(i = 0; i < n; i++){
+
+    *(dest + i) = *(src + i);
+  }
+
+  return n;
+
+}

@@ -1,0 +1,71 @@
+.section .data
+	
+	.global ptrvec	
+	.global num
+	
+.section .text
+
+	.global vec_sum
+	.global vec_avg
+	
+vec_sum:	
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+#body
+	pushl %ecx
+	pushl %edx
+
+	cmpl $0, num
+	je end
+	
+	movl num, %ecx
+	movl ptrvec, %edx
+	movl %edx, %eax
+	
+sum:
+	addl $4, %edx
+	
+	addl %edx, %eax
+
+	loop sum	
+end:
+	popl %ecx
+	popl %edx
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret
+
+vec_avg:
+
+#epilogue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	pushl %ecx
+	pushl %eax
+	pushl %edx
+
+	call vec_sum
+
+	movl %eax, %esi
+
+	popl %ecx
+	popl %eax
+	popl %edx
+	
+	movl %esi, %eax
+	movl num, %ecx
+	divl %ecx
+
+end1:	
+	popl %ecx
+	popl %esi
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

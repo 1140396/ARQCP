@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include "ex02.h"
+
+int main(){
+
+  int v1[] = {1,2,3,4};
+
+  int v2[], i;
+
+  copy_vec(v1,v2);
+
+  int size = sizeof(v1)/sizeof(int);
+  
+  for(i = 0; i < size; i++){
+
+    printf("Vec2 %d", vec[i]);
+  }
+}

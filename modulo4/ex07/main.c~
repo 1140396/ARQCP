@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "library.h"
+
+int main(){
+
+  int n = 5;
+  
+  short vetor[] = {2,4,3,6,7};
+
+  short *vec = vetor;
+  
+  int res = count_even(vec,n);
+  
+  printf("\nForam encontrados %d números pares no vetor\n", res);
+  
+  return 0;
+}

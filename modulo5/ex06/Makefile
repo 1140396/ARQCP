@@ -1,0 +1,17 @@
+ex06: main.o
+	gcc -g -Wall main.o -o ex06
+
+locate_greater.o: locate_greater.s
+	gcc -Wall -g -c locate_greater.s -o locate_greater.o
+
+main.o: main.c library.h
+	gcc -g -Wall -c main.c -o main.o
+
+debug: ex06
+	gdb -tui ./ex06
+
+clean:
+	rm *.o ex06
+
+run: ex06
+	./ex06

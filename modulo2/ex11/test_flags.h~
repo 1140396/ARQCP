@@ -1,0 +1,2 @@
+char test_flags();
+extern int op1, op2

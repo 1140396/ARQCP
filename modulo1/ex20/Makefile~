@@ -1,0 +1,14 @@
+ex20: main.o find_all_word.o
+	gcc -g -Wall ex20.o find_all_word.o -o ex20
+
+find_all_word.o: find_all_word.c
+	gcc -g -Wall -c find_all_word.c -o find_all_word.o
+
+main.o: main.c
+	gcc -g -Wall -c main.c -o main.o
+
+clean:
+	rm -f *.o ex20
+
+run: ex20
+	./ex20

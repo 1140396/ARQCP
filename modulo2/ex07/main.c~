@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "asm.h"
+
+short s1 = 1, s2 = 2, res = 0;
+  
+int main(){
+
+  printf("\nS1: %d", s1);
+
+  printf("\nS2: %d", s2);
+
+  res = crossSumBytes();
+
+  printf("\nRes: %d\n", res);
+  
+  return 0;
+}

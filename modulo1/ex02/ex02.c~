@@ -1,0 +1,11 @@
+void copy_vec(int *vec1, int *vec2){
+
+  int i;
+
+  size_t n = sizeof(vec1) / sizeof(int);
+  
+  for(i = 0; i < n; i++){
+
+    vec1[i] = vec2[i];
+  }
+}

@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include "zero_count.h"
+
+char str[] = "\n 0";
+
+char *ptr1 = str;
+
+int main(){
+
+  int ret = 0;
+
+  ret = zero_count();
+  
+  printf("Número de zeros na string: %d\n", ret);
+  
+  return 0;
+}

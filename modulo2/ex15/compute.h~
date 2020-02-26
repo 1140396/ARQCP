@@ -1,0 +1,2 @@
+int compute();
+extern A,B,C,D

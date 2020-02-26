@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include "library.h"
+
+int num = 10;
+
+char vec_grades [] = {10,20,15,15,16,12,12,10,18,19};
+
+int vec_freq [20];
+
+char *ptrgrades = vec_grades;
+
+int *ptrfreq = vec_freq;
+
+int main(){
+
+  int i,j;
+  
+  printf("\n --- VETOR DE NOTAS --- \n");
+
+  for(i = 0; i < num; i++){
+
+    printf("%d|", vec_grades[i]);
+  }
+
+  printf("\n");
+
+  frequencies();
+  
+  printf("\n --- VETOR DE FREQUENCIAS --- \n");
+
+  for(j = 0; j < 20; j++){
+
+    printf("%d|", vec_freq[j]);
+  }
+
+  printf("\n")
+
+  return 0;
+}

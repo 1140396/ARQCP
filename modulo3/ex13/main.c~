@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include "keep_positives.h"
+
+int num = 10;
+
+int vec[] = {-1, -2, -5, 1,4 ,-8, 12, 87, 0, 7};
+
+int *ptrvec = vec;
+  
+int main(){
+
+  keep_positives();
+
+  int i;
+  
+  for(i = 0; i < num; i++){
+
+    printf("%d|\n", &vec[i]);
+  }
+  
+  return 0;
+}

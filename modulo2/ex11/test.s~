@@ -1,0 +1,32 @@
+.section .data
+
+.global op1
+.global op2
+
+.section .text
+
+.global test
+
+test:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	movl op1, %eax
+	addl op2, %eax
+	jc output_com_carry
+	jmp fim
+
+output_com_carry:
+
+	movb $1, %al
+	mov $0, %eax
+	
+fim:
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

@@ -1,0 +1,2 @@
+int salary();
+extern int code, current_salary;

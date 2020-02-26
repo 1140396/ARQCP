@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define MAX 30
+
+void fill_array(int * vec){
+
+
+  int i;
+
+  for(i=0; i < int){
+  }
+}
+
+
+int main(){
+  
+  int a [MAX];
+
+  int i, soma = 0;
+
+  float avg = 0;
+
+  //Entrada dos valores
+  for(i=0; i < MAX; i++){
+
+    printf("Digite o %d. valor: ", i+1);
+    scanf("%d", &a[i]);
+  }
+
+
+  //Calcular a soma
+  for(i=0; i<MAX; i++){
+
+    soma = soma + a[i];
+  }
+
+  //Calcular média
+  avg = soma / MAX;
+
+  printf("\n\nSoma: %d\n\n", soma);
+
+  printf("\n\nMedia: %f\n\n", avg);
+  
+  return 0;
+}

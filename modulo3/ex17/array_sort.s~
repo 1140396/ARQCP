@@ -1,0 +1,59 @@
+.section .data
+
+	.global ptrvec
+	.global num
+
+.section .text
+
+	.global array_sort
+
+array_sort:
+
+#prologue
+
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	pushl %ebx
+	
+	movl num, %ecx
+	subl $1, %ecx # n-1 iterações para fazer a comparação dos digitos
+	
+	movl ptrvec, %eax
+
+	cmpl $0, %ecx
+	je end
+	
+verification:
+
+	movl 4(%eax), %ebx
+	
+	cmpl (%ebx), %eax
+	jg swap
+
+	addl $4, %eax
+	
+	jmp end_loop
+	
+swap:
+
+	movl (%eax), %edx
+	movl %ebx, (%eax)
+	movl (%edx), %ebx
+
+	addl $4, %eax
+	
+end_loop:
+
+	loop verification
+	
+end:
+	popl %ebx
+	
+#epilogue
+
+	movl %ebp, %esp
+	popl %ebp
+	ret
+	

@@ -1,0 +1,31 @@
+.section .data #declarar os dados
+
+.global op1
+.global op2	
+.global op3
+.global op4	
+	
+.section .text
+
+.global sum_v3 # int sum()
+
+sum_v3:
+#prologue
+	pushl %ebp 
+	movl %esp, %ebp
+#body
+	movl op3, %ebx
+	movl op4, %eax
+	movl op1, %ebx
+	movl op2, %ecx
+	addl %ebx,%eax
+	addl %ebx, %ecx
+	subl %eax, %ecx
+	
+
+#epilogue
+
+	movl %ebp, %esp
+	popl %ebp
+	ret
+	

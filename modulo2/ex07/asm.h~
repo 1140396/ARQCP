@@ -1,0 +1,2 @@
+int crossSumBytes();
+extern short s1, s2;

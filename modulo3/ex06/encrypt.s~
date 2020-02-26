@@ -1,0 +1,55 @@
+.section .data
+	
+.global ptr1
+
+.section .text
+
+.global encrypt
+
+encrypt:
+#epilogue
+	pushl %ebp
+	movl %esp, %ebp
+#body
+
+	pushl %ecx
+	pushl %ebx
+	
+	movl $0, %eax
+	movl $0, %ecx
+	
+	movl ptr1, %ebx
+
+loop_verificacao:
+
+	movb (%ebx), %cl
+
+	cmpb $0, %cl
+	je end
+	
+	cmpb $'a', %cl
+	jne replace_dig
+
+	cmpb $'', %cl
+	jne replace_dig
+
+	incl %ebx
+	
+	jmp loop_verificacao
+
+replace_dig:
+
+	addb $'2', %cl 
+	
+	incl %eax
+	incl %ebx
+
+	jmp loop_verificacao
+end:
+	popl %ecx
+	popl %ebx
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

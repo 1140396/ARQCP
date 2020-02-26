@@ -1,0 +1,17 @@
+ex05: main.o inc_square.o
+	gcc -Wall -g main.o inc_square.o -o ex05
+
+main.o: main.c library.h
+	gcc -Wall -g -c main.c -o main.o
+
+inc_square.o: inc_square.s
+	gcc -Wall -g -c inc_square.s -o inc_square.o
+
+debug: ex05
+	gdb -tui ./ex05
+
+clean:
+	rm *.o
+
+run: ex05
+	 ./ex05

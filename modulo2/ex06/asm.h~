@@ -1,0 +1,2 @@
+short concatBytes();
+extern char a, b;

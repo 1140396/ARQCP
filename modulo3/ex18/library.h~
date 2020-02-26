@@ -1,0 +1,2 @@
+int sort_without_reps();
+int verification_reps();

@@ -1,0 +1,32 @@
+.section .text
+
+	.global inc_and_square
+
+inc_and_square:
+
+#prologue
+	
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+
+	pushl %ebx
+
+	movl 12(%ebp), %eax
+	movl 8(%ebp), %ebx
+inc:
+	incl (%ebx)
+	
+square:
+	imull $2, %eax
+end:
+	
+#epilogue
+
+	popl %ebx
+	
+	movl %ebp, %esp
+	popl %ebp
+	ret
+	

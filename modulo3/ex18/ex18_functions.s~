@@ -1,0 +1,113 @@
+.section .data
+
+	.global ptrsrc
+	.global ptrdest
+	.global num
+
+.section .text
+
+
+	.global verification_reps
+
+	.global copy_array_without_reps
+	
+
+copy_array_without_reps:
+
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	
+	pushl %ebx
+	pushl %esi
+
+	movl ptrsrc, %ebx
+	movl num, %ecx
+	movl ptrdest, %edx
+
+	movl $0, %eax
+
+validation_copy_array_wr:
+
+		
+	pushl %eax
+	pushl %ecx
+	pushl %edx
+	
+	call verification_reps
+
+	movl %eax, %esi
+
+	popl %edx
+	popl %ecx
+	popl %eax
+	
+	cmpl $0, %esi
+	je copy_array
+
+	jmp end_loop
+	
+copy_array:
+
+	movl (%ebx), %edi
+	movl %edi, (%edx)
+
+	addl $4, %edx
+	
+	incl %eax
+
+end_loop:
+
+	addl $4, %ebx
+
+	loop validation_copy_array_wr
+	
+end:
+
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret	
+
+verification_reps:
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+#body
+	pushl %ebx
+	pushl %esi
+	
+	movl %eax, %ecx
+	movl ptrdest, %edx
+	movl $1, %eax
+	
+	cmpl $0, %ecx
+	je end
+	
+verification:
+
+	movl (%ebx),  %esi
+	cmpl %esi, (%edx)
+	je flag
+
+	jmp end_loop
+flag:
+	movl $0, %eax
+
+	jmp end
+	
+end_loop1:
+	
+	addl $4, %edx
+	loop verification
+end1:
+	popl %esi
+	popl %ebx
+
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret 

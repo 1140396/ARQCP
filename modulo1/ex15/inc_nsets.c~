@@ -1,0 +1,6 @@
+extern int n;
+
+void inc_nsets(){
+
+  n++;
+}

@@ -1,0 +1,49 @@
+.section .data
+
+	.global num
+	.global ptrvec
+
+.section .text
+
+	.global keep_positives
+
+keep_positives:
+#prologue
+	pushl %ebp
+	movl %esp, %ebp
+
+	pushl %ecx
+	pushl %ebx
+	
+	movl num, %ecx
+	movl ptrvec, %ebx
+
+verification_loop:
+
+	cmpl $0, %ebx
+	je end
+
+	cmpl $0, (%ebx)
+	jl add_index
+
+	addl $4, %ebx
+
+	jmp end_loop
+
+add_index:
+
+	movl %ebx, (%ebx)
+
+	addl $4, %ebx
+
+end_loop:
+
+	loop verification_loop
+
+end:
+	popl %ecx
+	
+#epilogue
+	movl %ebp, %esp
+	popl %ebp
+	ret

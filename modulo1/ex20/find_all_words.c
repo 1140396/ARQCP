@@ -1,0 +1,32 @@
+ void find_all_words(char *str, char *word, char **addrs) {
+
+  int i = 0, j = 0;
+
+  /** Percorre a String apartir do endereço inicial passado por parâmetro
+      e verifica se as 2 letras são iguais, ignorando o facto de serem 
+      maiúsculas ou minúsculas **/
+
+  while(*(str + i) != '\0') {
+
+    while((*(word + j) == *(str + i + j) ||
+	   *(word + j) == (*(str + i + j) + 32) ||
+	   *(word + j) == (*(str + i + j) - 32))
+	  && *(word + j) != '\0') {
+
+      j++;
+    }
+
+    // Se a String a procurar for percorrida até ao fim guarda a posição
+    
+    if(*(word + j) == '\0') {
+      
+      *addrs = (str + i);
+      
+      addrs++;
+    }
+
+    j = 0;
+    
+    i++;
+  }
+}

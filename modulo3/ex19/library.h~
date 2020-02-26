@@ -1,0 +1,3 @@
+void frequencies();
+extern char *ptrgrades;
+extern int *ptrfreq;

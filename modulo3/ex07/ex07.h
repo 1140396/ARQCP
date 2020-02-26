@@ -1,0 +1,2 @@
+int encrypt();
+int decrypt();
